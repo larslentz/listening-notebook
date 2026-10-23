@@ -58,7 +58,7 @@ function StaticShell() {
               <span className="brand-mark"><SoundFieldMark /></span>
               <span>
                 <span className="brand-name">Listening<br />Notebook</span>
-                <span className="brand-caption">Personal listening desk</span>
+                <span className="brand-caption">A Recordist's Desk</span>
               </span>
             </a>
             <div className="creator-credit">
