@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Listening Notebook"
+description = "A private, offline-capable listening and annotation notebook for field recordists, sound artists, ambient musicians, and curious listeners. Save audio and notes locally, compare listening perspectives, and export portable backups."
+version = "1.0.0"
+id = "artifacts/listening-notebook"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18899
+
+[services.development]
+run = "pnpm --filter @workspace/listening-notebook run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/listening-notebook", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/listening-notebook/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18899"
+BASE_PATH = "/"

@@ -1,0 +1,371 @@
+Build a complete, working web application called “Listening Notebook.”
+
+PURPOSE
+
+Create a thoughtful listening and annotation tool for field recordists, sound artists, ambient musicians, and anyone who wants to describe recordings and listening experiences more precisely.
+
+The app is inspired by the ideas discussed in Michel Chion’s Sound: An Acoulogical Treatise: attending to sound as heard, distinguishing perceived qualities from source identification, considering time and disappearance, and reflecting on how context and recording technology shape listening.
+
+This is an original practical interpretation, not an official adaptation of the book. Do not invent quotations, imply endorsement, or present the app’s exercises and vocabulary as Chion’s exact terminology or prescribed methods.
+
+The app should help users move beyond descriptions such as “traffic and birds” without suggesting that source identification is wrong or that contextual and emotional descriptions are less valuable.
+
+Build an actual usable application, not a landing page or static prototype.
+
+PRODUCT CHARACTER
+
+Calm, precise, private, and practical.
+
+Think of a field notebook combined with an audio listening desk—not a social network, music streaming service, or full DAW.
+
+No scores, streaks, achievement badges, or claims that users are listening correctly.
+
+Use subtle, accessible typography and a restrained dark theme with an optional light theme. Favor readable labels, clear spacing, and minimal visual distraction.
+
+TECHNICAL REQUIREMENTS
+
+Use:
+- React and TypeScript.
+- Vite.
+- A responsive interface.
+- IndexedDB for local project data and user-imported audio.
+- Browser audio playback, with Web Audio API features where helpful.
+- A service worker and web app manifest for an installable, offline-capable PWA.
+- Open-source libraries only.
+
+Do not require:
+- Accounts.
+- A backend.
+- Paid services.
+- API keys.
+- Cloud storage.
+- AI inference.
+- Audio uploads.
+- Analytics or telemetry.
+
+The core application must run entirely in the browser after its assets have been cached.
+
+Be honest about browser limitations:
+- Audio format support varies by browser.
+- Offline storage is not a substitute for backup.
+- Large audio files may exceed available storage.
+- A service worker does not make an uncached first visit work offline.
+
+Do not promise support for every audio format. Detect playback failures and explain them gracefully.
+
+Keep audio decoding and waveform generation asynchronous so large files do not freeze the interface. Use an HTML audio element for primary playback if needed, and make waveform generation optional. Do not require decoding an entire long recording just to play it.
+
+CORE CONCEPT: SEPARATE LISTENING PERSPECTIVES
+
+Each recording or live listening session contains several distinct but connected layers:
+
+1. Sources and context
+   What might be producing the sounds, and what is known about the place and circumstances?
+
+2. Audible qualities
+   What does the listener actually hear in texture, motion, density, pitch character, spatial impression, and temporal development?
+
+3. Lived experience
+   What does the listener notice in attention, bodily response, emotion, associations, and memory?
+
+4. Recording mediation
+   How might microphone placement, wind protection, gain, processing, playback equipment, and other technical choices affect the experience?
+
+Never automatically merge these into one supposedly objective description.
+
+PRIMARY WORKFLOW
+
+A. Create a session.
+B. Import a local recording or choose “Live listening—no recording.”
+C. Choose a listening perspective.
+D. Listen, write notes, and optionally place timestamped observations.
+E. Compare perspectives.
+F. Assemble an editable description.
+G. Export notes and back up the project.
+
+MAIN SCREENS
+
+1. Library
+2. Listening Desk
+3. Description Builder
+4. Vocabulary Explorer
+5. Settings and Backup
+
+1. LIBRARY
+
+Provide:
+- Create new session.
+- Import audio.
+- Create a live listening session without audio.
+- Search session titles, notes, and descriptions.
+- Filter by tags, date, recording/live session, and descriptive qualities.
+- Sort by creation date, listening date, title, or last edited.
+- Duplicate a session’s notes without duplicating its audio unnecessarily.
+- Delete with confirmation.
+- Storage usage information where browser support allows it.
+
+Session cards should show:
+- Title.
+- Recording date, if entered.
+- Listening date.
+- Duration, if available.
+- Tags.
+- A short user-written summary.
+- Whether an audio file is stored locally or needs to be reattached.
+
+Include a complete sample session with realistic fictional observations. Clearly label it as demonstration content.
+
+Do not depend on downloading sample audio. The sample may be a live-listening session with an illustrative timeline.
+
+2. SESSION METADATA
+
+All fields except title are optional.
+
+Include:
+- Title.
+- Session type: recording or live listening.
+- Recording date/time.
+- Listening date/time.
+- Location name.
+- Optional coordinates, entered manually.
+- Weather.
+- Indoor/outdoor.
+- Recordist.
+- Recorder.
+- Microphones.
+- Microphone configuration.
+- Wind protection.
+- Gain or recording-level notes.
+- File format and file size, when available.
+- Sample rate and channel count, only when reliably available.
+- Processing applied.
+- Playback equipment.
+- General notes.
+- Tags.
+
+Do not request geolocation permission automatically. Exact coordinates must be excluded from exports by default, with an explicit option to include them.
+
+3. LISTENING DESK
+
+Audio features:
+- Play/pause.
+- Seek bar.
+- Current time and duration.
+- Volume control.
+- Optional waveform with a graceful fallback to a simple timeline.
+- A/B loop selection.
+- Loop on/off.
+- Jump to annotation.
+- Keyboard shortcuts, documented in a help panel.
+- Disable global keyboard shortcuts while users are typing.
+
+Keep playback at normal speed for the initial version.
+
+Provide five listening perspectives.
+
+PERSPECTIVE A: CONTEXT WITHHELD
+
+Present a simplified interface that hides source-oriented information while the user listens.
+
+Hide:
+- Original filename.
+- Session title if it reveals the source.
+- Location and metadata.
+- Source-identification notes.
+- Tags that identify sources.
+- Other users’ or previous-pass descriptions, if present.
+
+Use a neutral heading such as “Listening session.”
+
+Explain:
+“Hiding context can support a different listening approach. It cannot make you forget what you already know.”
+
+Prompts:
+- What is continuous, and what interrupts it?
+- What changes before you recognize a possible cause?
+- What seems near, distant, surrounding, or difficult to place?
+- What captures your attention first?
+- What becomes noticeable only after a while?
+
+Allow the user to reveal context deliberately at any time.
+
+PERSPECTIVE B: AUDIBLE QUALITIES
+
+Provide optional descriptive dimensions with free-text support.
+
+Use selectable words as writing aids, not measurements or mandatory classifications.
+
+Categories:
+
+Texture:
+- Smooth
+- Granular
+- Rough
+- Airy
+- Metallic
+- Brittle
+- Dense
+- Porous
+- Layered
+- Pulsating
+
+Temporal behavior:
+- Continuous
+- Intermittent
+- Impulsive
+- Repeating
+- Irregular
+- Swelling
+- Decaying
+- Accumulating
+- Abruptly interrupted
+
+Pitch character:
+- Clearly pitched
+- Broad-band
+- Low-frequency emphasis
+- High-frequency emphasis
+- Harmonic
+- Inharmonic
+- Unstable
+- Mixed or uncertain
+
+Dynamics:
+- Steady
+- Gently fluctuating
+- Surging
+- Sudden peaks
+- Fading
+- Strong contrast
+
+Spatial impression:
+- Close
+- Distant
+- Diffuse
+- Localized
+- Enveloping
+- Moving
+- Layered in depth
+- Uncertain position
+
+Perceived scale:
+- Intimate
+- Small
+- Expansive
+- Vast
+- Indeterminate
+
+For each category:
+- Allow multiple selections.
+- Allow custom terms.
+- Include “uncertain / not applicable.”
+- Provide a short plain-language explanation.
+- Let the user describe changes over time.
+
+State clearly that spatial impression and perceived scale describe the listening experience, not verified physical geometry.
+
+PERSPECTIVE C: SOURCES AND CONTEXT
+
+Let users separately enter:
+- Directly observed source.
+- Suspected source.
+- Context supplied later.
+- Unknown source.
+- Confidence: certain, probable, possible, unknown.
+- Evidence or reason for the identification.
+
+Prompts:
+- Did you see the source, infer it, or learn about it afterward?
+- Could another source produce a similar audible impression?
+- What becomes easier to describe once you know the context?
+- What do you stop noticing when you name the source?
+
+Never present inferred sources as confirmed facts.
+
+PERSPECTIVE D: LIVED EXPERIENCE
+
+Free-text prompts:
+- Where did your attention move?
+- Did your bodily sense of space or distance change?
+- What felt calm, tense, exposed, sheltered, intimate, or overwhelming?
+- What memories or associations appeared?
+- Did your experience change during repeated listening?
+- What remained after the sound ended?
+- What was difficult to put into words?
+
+Optional user-defined emotion tags.
+
+Do not infer mood from audio.
+Do not treat these notes as clinical or psychological assessments.
+
+PERSPECTIVE E: RECORDING MEDIATION
+
+Prompts:
+- What was different between being there and hearing the recording?
+- What became more prominent or less prominent?
+- What might microphone placement have emphasized?
+- Could wind, handling noise, gain, processing, or playback equipment influence this impression?
+- What was outside the microphone’s apparent perspective?
+- Did headphones and speakers produce different impressions?
+
+Support an explicit distinction between:
+- Observed technical fact.
+- Listener impression.
+- Possible explanation.
+
+Do not diagnose technical artifacts automatically.
+
+4. TIMESTAMPED OBSERVATIONS
+
+For imported recordings:
+- Add an observation at the current playback position.
+- Add a start and end time for a region.
+- Edit times manually.
+- Click an observation to seek to it.
+- Loop a selected region.
+- Sort and filter annotations by perspective.
+
+For live sessions:
+- Provide an optional elapsed-time session clock.
+- Also allow notes without timestamps.
+- Do not pretend elapsed times are synchronized to a nonexistent audio file.
+
+Annotation fields:
+- Start time.
+- Optional end time.
+- Listening perspective.
+- Short label.
+- Note.
+- Selected descriptive terms.
+- Source confidence, where relevant.
+- Created/updated timestamps.
+
+Example annotation:
+“01:12–01:28: A low, diffuse swell grows beneath the finer continuous texture, then recedes without a sharp ending.”
+
+Use examples like this as demonstrations of writing, not as automatically generated claims about an uploaded file.
+
+5. REPEATED LISTENING PASSES
+
+Users can create multiple passes within one session.
+
+Examples:
+- First impression.
+- Context withheld.
+- Texture and time.
+- Source identification.
+- Headphone playback.
+- Speaker playback.
+- Return listening.
+
+Each pass has:
+- Name.
+- Date/time.
+- Optional playback-equipment notes.
+- Perspective-specific notes.
+- Annotations.
+
+Provide a comparison view with two passes side by side.
+
+Useful comparison prompts:
+- What did you notice later that was absent fr
