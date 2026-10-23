@@ -1,0 +1,53 @@
+.ln-misty-header .topbar {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: hsl(204 18% 12%);
+  background-image:
+    radial-gradient(ellipse 44% 170% at 70% 0%, hsl(194 20% 54% / .17), transparent 74%),
+    radial-gradient(ellipse 35% 110% at 92% 100%, hsl(24 40% 59% / .10), transparent 76%),
+    linear-gradient(104deg, hsl(204 18% 12%), hsl(201 17% 15%) 58%, hsl(203 18% 13%));
+}
+
+.ln-misty-header .topbar::before,
+.ln-misty-header .topbar::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.ln-misty-header .topbar::before {
+  width: 38%;
+  height: 150%;
+  left: 46%;
+  top: -52%;
+  background: radial-gradient(ellipse, hsl(196 25% 74% / .12) 0%, hsl(196 25% 74% / .045) 42%, transparent 74%);
+  filter: blur(10px);
+}
+
+.ln-misty-header .topbar::after {
+  width: 112px;
+  height: 84px;
+  right: 17%;
+  top: -37px;
+  background: radial-gradient(ellipse, hsl(30 58% 69% / .22) 0%, hsl(30 58% 69% / .08) 38%, transparent 76%);
+  filter: blur(12px);
+}
+
+.ln-misty-header .topbar > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ln-misty-header .topbar::before {
+    animation: mist-drift 14s ease-in-out infinite alternate;
+  }
+
+  @keyframes mist-drift {
+    from { transform: translateX(-7px); opacity: .76; }
+    to { transform: translateX(8px); opacity: 1; }
+  }
+}

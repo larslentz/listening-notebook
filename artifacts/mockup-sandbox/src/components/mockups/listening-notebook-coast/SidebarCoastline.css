@@ -1,0 +1,51 @@
+.sidebar-coast-variant .side-rail {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.sidebar-coast-variant .side-rail > :not(.sidebar-coastline-art) {
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar-coast-variant .sidebar-coastline-art {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  bottom: 69px;
+  width: 100%;
+  height: 154px;
+  overflow: visible;
+  opacity: .83;
+  pointer-events: none;
+}
+
+.sidebar-coast-variant .coastline-distant {
+  fill: hsl(202 23% 12% / .72);
+}
+
+.sidebar-coast-variant .coastline-ridge {
+  fill: hsl(202 24% 14% / .88);
+}
+
+.sidebar-coast-variant .coastline-shore {
+  fill: hsl(198 28% 16% / .95);
+}
+
+.sidebar-coast-variant .coastline-waterline,
+.sidebar-coast-variant .coastline-echo {
+  fill: none;
+  stroke: hsl(173 24% 53% / .27);
+  stroke-width: .8;
+}
+
+.sidebar-coast-variant .coastline-palm {
+  stroke: hsl(193 17% 34% / .72);
+  stroke-width: 1.15;
+}
+
+@media (max-width: 900px) {
+  .sidebar-coast-variant .sidebar-coastline-art {
+    display: none;
+  }
+}

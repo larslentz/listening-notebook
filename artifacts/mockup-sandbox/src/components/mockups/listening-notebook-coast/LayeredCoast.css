@@ -1,0 +1,71 @@
+.ln-coast {
+  --coast-ink: 13 25 34;
+  --coast-mist: 157 183 187;
+}
+
+.ln-coast .app-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* One continuous night-coast wash joins the rail and topbar without touching layout. */
+.ln-coast .app-shell::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 auto;
+  height: 226px;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 67% 0%, rgb(125 157 166 / 15%), transparent 42%),
+    radial-gradient(ellipse at 9% 16%, rgb(62 100 113 / 21%), transparent 42%),
+    linear-gradient(180deg, rgb(20 39 48 / 43%) 0%, rgb(20 38 46 / 18%) 65%, transparent 100%);
+}
+
+.ln-coast .app-shell::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 222px;
+  pointer-events: none;
+  opacity: .37;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 222' preserveAspectRatio='none'%3E%3Cpath d='M0 124 C103 119 133 103 204 105 C278 107 307 66 365 74 C412 80 438 108 485 99 C545 87 556 44 625 55 C697 67 704 108 785 104 C861 100 875 78 934 81 C1006 86 1017 120 1092 111 C1160 102 1180 69 1245 73 C1325 79 1350 113 1440 93' fill='none' stroke='%239db7bb' stroke-opacity='.42' stroke-width='1.2'/%3E%3Cpath d='M0 143 C110 140 139 123 210 126 C282 129 309 91 371 96 C422 100 441 126 492 119 C552 111 568 72 629 80 C696 89 715 128 786 126 C859 124 881 99 942 104 C1012 111 1025 140 1098 132 C1173 124 1190 94 1251 99 C1329 105 1364 136 1440 120' fill='none' stroke='%239db7bb' stroke-opacity='.24' stroke-width='1'/%3E%3Cpath d='M0 162 C98 158 151 143 216 147 C289 151 323 117 381 122 C431 126 456 148 504 143 C565 137 582 101 642 106 C704 111 726 148 795 148 C867 147 892 122 951 127 C1017 133 1041 159 1110 151 C1175 144 1205 117 1261 122 C1335 129 1375 155 1440 143' fill='none' stroke='%239db7bb' stroke-opacity='.15' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+.ln-coast .side-rail,
+.ln-coast .main-area {
+  position: relative;
+  z-index: 1;
+}
+
+.ln-coast .side-rail {
+  background: linear-gradient(180deg, rgb(21 39 47 / 78%) 0%, hsl(var(--sidebar)) 58%);
+}
+
+.ln-coast .topbar {
+  position: relative;
+  background: linear-gradient(90deg, rgb(26 45 53 / 50%), rgb(24 41 50 / 35%) 58%, rgb(27 42 49 / 25%));
+  border-bottom-color: hsl(var(--border) / .78);
+}
+
+.ln-coast .topbar::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 1px;
+  background: linear-gradient(90deg, rgb(146 180 184 / 20%), rgb(146 180 184 / 6%) 58%, transparent);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .ln-coast .app-shell::before,
+  .ln-coast .app-shell::after {
+    height: 110px;
+  }
+}
