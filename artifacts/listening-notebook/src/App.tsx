@@ -34,6 +34,16 @@ function dataUrlBlob(url:string){const [meta,data]=url.split(',');const bytes=at
 function Field({label,children,className=''}:{label:string;children:ReactNode;className?:string}){return <div className={`field ${className}`}><label className="field-label">{label}{children}</label></div>;}
 function Modal({title,onClose,children}:{title:string;onClose:()=>void;children:ReactNode}){return <div className="modal-backdrop" role="presentation" onMouseDown={e=>{if(e.target===e.currentTarget)onClose();}}><section className="modal" role="dialog" aria-modal="true" aria-label={title}><div className="modal-head"><div><span className="eyebrow">Listening notebook</span><h2 className="modal-title">{title}</h2></div><button className="btn icon-btn" onClick={onClose} aria-label="Close dialog" data-testid="button-close-dialog"><X size={16}/></button></div>{children}</section></div>;}
 
+function SoundFieldMark(){
+ return <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <path d="M8.1 5.5C5.4 7.1 3.8 9.4 3.8 12s1.6 4.9 4.3 6.5" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round"/>
+  <path d="M15.9 5.5c2.7 1.6 4.3 3.9 4.3 6.5s-1.6 4.9-4.3 6.5" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round"/>
+  <path d="M9.7 8.3c-1.5 1-2.4 2.2-2.4 3.7s.9 2.7 2.4 3.7" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"/>
+  <path d="M14.3 8.3c1.5 1 2.4 2.2 2.4 3.7s-.9 2.7-2.4 3.7" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round"/>
+  <circle cx="12" cy="12" r="1.25" fill="hsl(var(--accent))"/>
+ </svg>;
+}
+
 function App(){
  const [location,setLocation]=useLocation();
  const [sessions,setSessions]=useState<Session[]>([]);
@@ -131,7 +141,7 @@ ${s.observations.map(o=>`${o.start===null?'Untimed':`${formatTime(o.start)}${o.e
  const openWorkspaceWhenEmpty=(destination:'session'|'description'):MouseEventHandler<HTMLAnchorElement>=>event=>{if(latestSession)return;event.preventDefault();if(!loaded){showToast('Your notebook is still opening. Try again in a moment.');return;}setCreatingType('live');setCreateDestination(destination);setModal('create');};
  return <div className="app-shell">
   <aside className={`side-rail ${mobileOpen?'open':''}`} aria-label="Main navigation">
-    <div className="brand-block"><Link href="/" className="brand" aria-label="Listening Notebook home"><span className="brand-mark"><AudioLines size={18}/></span><span><span className="brand-name">Listening<br/>Notebook</span><span className="brand-caption">Personal listening desk</span></span></Link><div className="creator-credit"><div className="creator-byline">BY LARS LENTZ</div><a className="creator-link" href="https://sleekbio.com/larslentz" target="_blank" rel="noopener noreferrer" aria-label="More by Lars Lentz" data-testid="link-more-by-lars">More by Lars <ArrowUpRight size={16} aria-hidden="true"/></a></div></div>
+     <div className="brand-block"><Link href="/" className="brand" aria-label="Listening Notebook home"><span className="brand-mark"><SoundFieldMark/></span><span><span className="brand-name">Listening<br/>Notebook</span><span className="brand-caption">Personal listening desk</span></span></Link><div className="creator-credit"><div className="creator-byline">BY LARS LENTZ</div><a className="creator-link" href="https://sleekbio.com/larslentz" target="_blank" rel="noopener noreferrer" aria-label="More by Lars Lentz" data-testid="link-more-by-lars">More by Lars <ArrowUpRight size={16} aria-hidden="true"/></a></div></div>
     <div className="nav-label">Workspace</div>{navLink('/','Library',<ListMusic size={16}/>)}{navLink(latestSession?`/session/${latestSession.id}`:'/','Listening desk',<Headphones size={16}/>,openWorkspaceWhenEmpty('session'))}{navLink(latestSession?`/description/${latestSession.id}`:'/','Description builder',<FileText size={16}/>,openWorkspaceWhenEmpty('description'))}{navLink('/vocabulary','Vocabulary explorer',<BookOpen size={16}/>)}
    <div className="nav-label" style={{marginTop:30}}>Your device</div>{navLink('/settings','Settings & backup',<Settings2 size={16}/>)}
    <div className="side-bottom"><div className="privacy-note"><ShieldCheck size={16} style={{flexShrink:0,color:'hsl(var(--primary))'}}/><span>Private by design.<br/>Your notes stay in this browser.</span></div></div>

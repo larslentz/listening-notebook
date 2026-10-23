@@ -1,0 +1,140 @@
+@font-face {
+  font-family: 'Figtree Variable';
+  src: url('/__mockup/fonts/figtree-latin-wght-normal.woff2') format('woff2-variations');
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('/__mockup/fonts/space-mono-latin-400-normal.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('/__mockup/fonts/space-mono-latin-700-normal.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --background: 42 22% 94%;
+  --foreground: 202 18% 17%;
+  --border: 38 13% 80%;
+  --sidebar: 40 18% 91%;
+  --sidebar-foreground: 202 18% 17%;
+  --sidebar-border: 38 13% 80%;
+  --primary: 171 35% 34%;
+  --accent: 23 42% 62%;
+  --muted-foreground: 201 9% 42%;
+  --app-font-sans: 'Figtree Variable', sans-serif;
+  --app-font-serif: 'Figtree Variable', sans-serif;
+  --app-font-mono: 'Space Mono', monospace;
+}
+
+.dark {
+  --background: 204 18% 11%;
+  --foreground: 42 17% 88%;
+  --border: 204 12% 23%;
+  --sidebar: 205 19% 9%;
+  --sidebar-foreground: 42 17% 88%;
+  --sidebar-border: 204 12% 20%;
+  --primary: 166 35% 56%;
+  --accent: 23 48% 63%;
+  --muted-foreground: 205 9% 61%;
+}
+
+.logo-preview {
+  box-sizing: border-box;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 14px;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--app-font-sans);
+}
+
+.logo-preview *,
+.logo-preview *::before,
+.logo-preview *::after {
+  box-sizing: border-box;
+}
+
+.brand-card {
+  width: 236px;
+  min-height: 154px;
+  padding: 12px 16px;
+  border: 1px solid hsl(var(--sidebar-border));
+  border-radius: 8px;
+  background: hsl(var(--sidebar));
+}
+
+.brand-block {
+  padding-bottom: 26px;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 4px 10px 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  place-items: center;
+  border: 1px solid hsl(var(--primary));
+  border-radius: 50%;
+  color: hsl(var(--primary));
+}
+
+.brand-name {
+  display: block;
+  font-family: var(--app-font-serif);
+  font-size: 22px;
+  letter-spacing: -.03em;
+  line-height: 1;
+}
+
+.brand-caption {
+  display: block;
+  margin-top: 5px;
+  color: hsl(var(--muted-foreground));
+  font: 10px var(--app-font-mono);
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.creator-credit {
+  margin: 8px 10px 0 56px;
+}
+
+.creator-byline {
+  color: hsl(var(--muted-foreground));
+  font: 9px var(--app-font-mono);
+  letter-spacing: .19em;
+}
+
+.creator-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 7px;
+  color: hsl(var(--accent));
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
