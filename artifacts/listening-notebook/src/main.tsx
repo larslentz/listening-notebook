@@ -1,4 +1,7 @@
 import { createRoot } from 'react-dom/client';
+import '@fontsource-variable/figtree/wght.css';
+import '@fontsource/space-mono/latin-400.css';
+import '@fontsource/space-mono/latin-700.css';
 
 import App from './App';
 import { ErrorBoundary } from '@/components/error-boundary';

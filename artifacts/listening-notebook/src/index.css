@@ -140,9 +140,9 @@
   --chart-4: 41 43% 55%;
   --chart-5: 330 23% 57%;
 
-  --app-font-sans: 'Figtree', 'Avenir Next', Avenir, 'Segoe UI', sans-serif;
-  --app-font-serif: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
-  --app-font-mono: 'Space Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --app-font-sans: 'Figtree Variable', sans-serif;
+  --app-font-serif: 'Figtree Variable', sans-serif;
+  --app-font-mono: 'Space Mono', monospace;
   --radius: 0.5rem; /* 8px */
   --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
   --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
