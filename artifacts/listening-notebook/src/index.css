@@ -453,6 +453,7 @@ button { cursor: pointer; }
 .topbar { height:62px; padding:0 clamp(20px,4vw,54px); display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid hsl(var(--border)); }
 .breadcrumb { color:hsl(var(--muted-foreground)); font-size:12px; }
 .top-actions { display:flex; align-items:center; gap:10px; }
+.help-button { white-space:nowrap; }
 .content { max-width:1240px; margin:0 auto; padding:38px clamp(20px,4vw,54px) 80px; }
 .eyebrow { font:10px var(--app-font-mono); letter-spacing:.15em; color:hsl(var(--primary)); text-transform:uppercase; }
 .page-title { font-family:var(--app-font-serif); font-weight:400; font-size:clamp(34px,4vw,48px); letter-spacing:-.035em; margin:7px 0 5px; line-height:1.05; }
@@ -531,6 +532,19 @@ button { cursor: pointer; }
 .form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
 .span-2 { grid-column:span 2; }
 .modal-footer { display:flex; justify-content:flex-end; gap:8px; margin-top:18px; }
+.quick-start { display:flex; align-items:center; gap:12px; padding:13px 15px; margin-top:17px; }
+.quick-start-icon { display:grid; place-items:center; width:30px; height:30px; flex:none; border-radius:50%; color:hsl(var(--primary)); background:hsl(var(--primary)/.1); }
+.quick-start-copy { flex:1; min-width:0; }
+.quick-start-copy p { color:hsl(var(--muted-foreground)); font-size:11px; line-height:1.5; margin:4px 0 0; }
+.guide-intro { color:hsl(var(--muted-foreground)); font-size:12px; line-height:1.6; margin:0 0 14px; }
+.guide-list { display:grid; gap:9px; list-style:none; margin:0; padding:0; }
+.guide-step { display:grid; grid-template-columns:25px minmax(0,1fr); gap:10px; padding:11px 12px; border:1px solid hsl(var(--border)); border-radius:7px; }
+.guide-number { display:grid; place-items:center; width:24px; height:24px; border:1px solid hsl(var(--primary)/.45); border-radius:50%; color:hsl(var(--primary)); font:11px var(--app-font-mono); }
+.guide-step h3 { font-size:12px; font-weight:600; margin:1px 0 4px; }
+.guide-step p { color:hsl(var(--muted-foreground)); font-size:11px; line-height:1.55; margin:0; }
+.guide-step strong { color:hsl(var(--foreground)); font-weight:600; }
+.guide-shortcuts { display:flex; align-items:flex-start; gap:9px; padding:12px 2px 0; color:hsl(var(--muted-foreground)); font-size:11px; line-height:1.5; }
+.guide-shortcuts svg { flex:none; margin-top:1px; color:hsl(var(--primary)); }
 .notice { padding:12px 14px; border:1px solid hsl(var(--accent)/.4); color:hsl(var(--muted-foreground)); font-size:11px; line-height:1.55; border-radius:6px; background:hsl(var(--accent)/.06); }
 .description-editor { min-height:220px; line-height:1.8; font:16px/1.8 var(--app-font-serif); padding:20px; }
 .builder-columns { display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:23px; }
@@ -558,6 +572,9 @@ button { cursor: pointer; }
 @media(max-width:600px) {
  .content { padding-top:25px; }
  .topbar { height:54px; }
+  .quick-start { align-items:flex-start; flex-wrap:wrap; }
+  .quick-start-copy { flex-basis:calc(100% - 44px); }
+  .quick-start > .btn { margin-left:42px; }
  .toolbar .wide-label { display:none; }
  .session-row { grid-template-columns:38px minmax(0,1fr) auto; gap:10px; padding:13px; }
  .session-glyph { width:36px;height:36px; }
