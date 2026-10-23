@@ -440,6 +440,52 @@ button { cursor: pointer; }
 .app-shell { min-height: 100dvh; display: grid; grid-template-columns: 236px minmax(0,1fr); background: hsl(var(--background)); color: hsl(var(--foreground)); }
 .side-rail { background: hsl(var(--sidebar)); border-right: 1px solid hsl(var(--sidebar-border)); padding: 25px 16px 18px; display:flex; flex-direction:column; position:sticky; top:0; height:100dvh; }
 .brand-block { padding-bottom:26px; }
+.side-rail.sidebar-haze-extended {
+  isolation: isolate;
+}
+.side-rail.sidebar-haze-extended::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  width: 185px;
+  height: 72%;
+  left: -26px;
+  top: 8%;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    hsl(var(--primary) / .09) 0%,
+    hsl(var(--primary) / .06) 28%,
+    hsl(var(--primary) / .035) 62%,
+    transparent 100%
+  );
+  filter: blur(18px);
+}
+.side-rail.sidebar-haze-extended > * {
+  position: relative;
+  z-index: 1;
+}
+.side-rail.sidebar-haze-extended .brand-block {
+  position: relative;
+  isolation: isolate;
+}
+.side-rail.sidebar-haze-extended .brand-block::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: 218px;
+  height: 148px;
+  left: -11px;
+  top: -18px;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse 43% 39% at 27% 29%, hsl(196 25% 74% / .105), transparent 78%),
+    radial-gradient(ellipse 26% 25% at 71% 52%, hsl(30 48% 66% / .075), transparent 82%),
+    radial-gradient(ellipse 56% 52% at 45% 39%, hsl(195 22% 69% / .065), transparent 84%);
+  filter: blur(9px);
+}
 .brand { display:flex; gap:12px; align-items:flex-start; padding:4px 10px 0; }
 .brand-mark { width:34px; height:34px; flex:0 0 34px; aspect-ratio:1; border-radius:50%; border:1px solid hsl(var(--primary)); display:grid; place-items:center; color:hsl(var(--primary)); }
 .brand-name { display:block; font-family:var(--app-font-serif); font-size:22px; line-height:1; letter-spacing:-.03em; }
@@ -635,6 +681,18 @@ button { cursor: pointer; }
 @media(max-width:600px) {
  .content { padding-top:25px; }
  .topbar { height:54px; }
+  .side-rail.sidebar-haze-extended::after {
+    width: 172px;
+    left: -22px;
+    filter: blur(16px);
+  }
+  .side-rail.sidebar-haze-extended .brand-block::before {
+    width: 220px;
+    max-width: calc(100vw - 25px);
+    height: 145px;
+    left: -9px;
+    top: -17px;
+  }
   .quick-start { align-items:flex-start; flex-wrap:wrap; }
   .quick-start-copy { flex-basis:calc(100% - 44px); }
   .quick-start > .btn { margin-left:42px; }
