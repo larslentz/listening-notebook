@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent, type MouseEventHandler, type ReactNode } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Activity, Archive, AudioLines, BookOpen, Check, CircleHelp, Download, FileAudio, FileText, Headphones, Keyboard, ListMusic, LoaderCircle, Menu, Moon, Pause, Play, Plus, Search, Settings2, ShieldCheck, Sun, Trash2, Upload, Volume2, X } from 'lucide-react';
+import { Activity, Archive, ArrowUpRight, AudioLines, BookOpen, Check, CircleHelp, Download, FileAudio, FileText, Headphones, Keyboard, ListMusic, LoaderCircle, Menu, Moon, Pause, Play, Plus, Search, Settings2, ShieldCheck, Sun, Trash2, Upload, Volume2, X } from 'lucide-react';
 import { type Observation, type Pass, type Perspective, type Session, deleteAudio, deleteSession, getAudio, listSessions, makeSession, putAudio, saveSession } from '@/lib/model';
 
 const perspectives: { id: Perspective; title: string; subtitle: string }[] = [
@@ -131,7 +131,7 @@ ${s.observations.map(o=>`${o.start===null?'Untimed':`${formatTime(o.start)}${o.e
  const openWorkspaceWhenEmpty=(destination:'session'|'description'):MouseEventHandler<HTMLAnchorElement>=>event=>{if(latestSession)return;event.preventDefault();if(!loaded){showToast('Your notebook is still opening. Try again in a moment.');return;}setCreatingType('live');setCreateDestination(destination);setModal('create');};
  return <div className="app-shell">
   <aside className={`side-rail ${mobileOpen?'open':''}`} aria-label="Main navigation">
-   <Link href="/" className="brand" aria-label="Listening Notebook home"><span className="brand-mark"><AudioLines size={18}/></span><span><span className="brand-name">Listening<br/>Notebook</span><span className="brand-caption">Personal listening desk</span></span></Link>
+    <div className="brand-block"><Link href="/" className="brand" aria-label="Listening Notebook home"><span className="brand-mark"><AudioLines size={18}/></span><span><span className="brand-name">Listening<br/>Notebook</span><span className="brand-caption">Personal listening desk</span></span></Link><div className="creator-credit"><div className="creator-byline">BY LARS LENTZ</div><a className="creator-link" href="https://sleekbio.com/larslentz" target="_blank" rel="noopener noreferrer" aria-label="More by Lars Lentz" data-testid="link-more-by-lars">More by Lars <ArrowUpRight size={16} aria-hidden="true"/></a></div></div>
     <div className="nav-label">Workspace</div>{navLink('/','Library',<ListMusic size={16}/>)}{navLink(latestSession?`/session/${latestSession.id}`:'/','Listening desk',<Headphones size={16}/>,openWorkspaceWhenEmpty('session'))}{navLink(latestSession?`/description/${latestSession.id}`:'/','Description builder',<FileText size={16}/>,openWorkspaceWhenEmpty('description'))}{navLink('/vocabulary','Vocabulary explorer',<BookOpen size={16}/>)}
    <div className="nav-label" style={{marginTop:30}}>Your device</div>{navLink('/settings','Settings & backup',<Settings2 size={16}/>)}
    <div className="side-bottom"><div className="privacy-note"><ShieldCheck size={16} style={{flexShrink:0,color:'hsl(var(--primary))'}}/><span>Private by design.<br/>Your notes stay in this browser.</span></div></div>

@@ -439,7 +439,8 @@ button { cursor: pointer; }
 :focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: 3px; }
 .app-shell { min-height: 100dvh; display: grid; grid-template-columns: 236px minmax(0,1fr); background: hsl(var(--background)); color: hsl(var(--foreground)); }
 .side-rail { background: hsl(var(--sidebar)); border-right: 1px solid hsl(var(--sidebar-border)); padding: 25px 16px 18px; display:flex; flex-direction:column; position:sticky; top:0; height:100dvh; }
-.brand { display:flex; gap:12px; align-items:center; padding:4px 10px 34px; }
+.brand-block { padding-bottom:26px; }
+.brand { display:flex; gap:12px; align-items:center; padding:4px 10px 0; }
 .brand-mark { width:34px; height:34px; border-radius:50%; border:1px solid hsl(var(--primary)); display:grid; place-items:center; color:hsl(var(--primary)); }
 .brand-name { display:block; font-family:var(--app-font-serif); font-size:22px; line-height:1; letter-spacing:-.03em; }
 .brand-caption { display:block; color:hsl(var(--muted-foreground)); font:10px var(--app-font-mono); letter-spacing:.11em; text-transform:uppercase; margin-top:5px; }
@@ -449,6 +450,10 @@ button { cursor: pointer; }
 .nav-link.active { box-shadow:inset 2px 0 hsl(var(--primary)); }
 .side-bottom { margin-top:auto; border-top:1px solid hsl(var(--sidebar-border)); padding:16px 10px 0; }
 .privacy-note { display:flex; gap:9px; color:hsl(var(--muted-foreground)); font-size:11px; line-height:1.45; }
+.creator-credit { margin:8px 10px 0 56px; }
+.creator-byline { color:hsl(var(--muted-foreground)); font:9px var(--app-font-mono); letter-spacing:.19em; }
+.creator-link { display:inline-flex; align-items:center; gap:5px; margin-top:7px; color:hsl(var(--accent)); font-size:13px; font-weight:600; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:4px; }
+.creator-link:hover { color:hsl(var(--foreground)); }
 .main-area { min-width:0; }
 .topbar { height:62px; padding:0 clamp(20px,4vw,54px); display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid hsl(var(--border)); }
 .breadcrumb { color:hsl(var(--muted-foreground)); font-size:12px; }
