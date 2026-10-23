@@ -1,0 +1,85 @@
+.ln-sidebar-brand-haze .topbar {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: hsl(204 18% 12%);
+  background-image:
+    radial-gradient(ellipse 44% 170% at 70% 0%, hsl(194 20% 54% / .17), transparent 74%),
+    radial-gradient(ellipse 35% 110% at 92% 100%, hsl(24 40% 59% / .10), transparent 76%),
+    linear-gradient(104deg, hsl(204 18% 12%), hsl(201 17% 15%) 58%, hsl(203 18% 13%));
+}
+
+.ln-sidebar-brand-haze .topbar::before,
+.ln-sidebar-brand-haze .topbar::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.ln-sidebar-brand-haze .topbar::before {
+  width: 38%;
+  height: 150%;
+  left: 46%;
+  top: -52%;
+  background: radial-gradient(ellipse, hsl(196 25% 74% / .12) 0%, hsl(196 25% 74% / .045) 42%, transparent 74%);
+  filter: blur(10px);
+}
+
+.ln-sidebar-brand-haze .topbar::after {
+  width: 112px;
+  height: 84px;
+  right: 17%;
+  top: -37px;
+  background: radial-gradient(ellipse, hsl(30 58% 69% / .22) 0%, hsl(30 58% 69% / .08) 38%, transparent 76%);
+  filter: blur(12px);
+}
+
+.ln-sidebar-brand-haze .topbar > * {
+  position: relative;
+  z-index: 1;
+}
+
+.ln-sidebar-brand-haze .brand-block {
+  position: relative;
+  isolation: isolate;
+}
+
+.ln-sidebar-brand-haze .brand-block::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: 218px;
+  height: 148px;
+  left: -11px;
+  top: -18px;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse 43% 39% at 27% 29%, hsl(196 25% 74% / .105), transparent 78%),
+    radial-gradient(ellipse 26% 25% at 71% 52%, hsl(30 48% 66% / .075), transparent 82%),
+    radial-gradient(ellipse 56% 52% at 45% 39%, hsl(195 22% 69% / .065), transparent 84%);
+  filter: blur(9px);
+}
+
+@media (max-width: 900px) {
+  .ln-sidebar-brand-haze .brand-block::before {
+    width: 220px;
+    max-width: calc(100vw - 25px);
+    height: 145px;
+    left: -9px;
+    top: -17px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ln-sidebar-brand-haze .topbar::before {
+    animation: mist-drift-haze 14s ease-in-out infinite alternate;
+  }
+
+  @keyframes mist-drift-haze {
+    from { transform: translateX(-7px); opacity: .76; }
+    to { transform: translateX(8px); opacity: 1; }
+  }
+}

@@ -1,0 +1,33 @@
+.ln-sidebar-quiet-coast .side-rail {
+  isolation: isolate;
+}
+
+.ln-sidebar-quiet-coast .side-rail::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  left: 7px;
+  right: 0;
+  bottom: 91px;
+  height: 132px;
+  opacity: .22;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 132' fill='none'%3E%3Cpath d='M-10 94C19 91 29 86 49 89c19 3 30 13 49 9 20-4 31-18 53-19 23-1 31 13 51 13 12 0 22-5 30-10' stroke='%2397aaa0' stroke-opacity='.54' stroke-width='1'/%3E%3Cpath d='M-8 109c25-5 47-4 67 1 20 5 39 6 60 1 19-5 37-8 58-5 16 2 27 7 45 6' stroke='%2397aaa0' stroke-opacity='.34' stroke-width='.8'/%3E%3Cpath d='M45 89c15-9 30-12 45-9 13 3 22 11 36 10' stroke='%2397aaa0' stroke-opacity='.24' stroke-width='.7'/%3E%3Cpath d='M177 84V42' stroke='%23adbaa9' stroke-opacity='.56' stroke-width='1' stroke-linecap='round'/%3E%3Cpath d='M177 43c-5-9-12-13-20-14 5 7 11 11 20 12-3-9-1-16 5-22 1 8 0 15-4 22 7-7 14-9 22-7-6 6-12 9-21 9 7 2 12 6 16 12-8-1-14-4-18-10' stroke='%23adbaa9' stroke-opacity='.49' stroke-width='.85' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M143 101c13-7 25-8 39-5 13 3 23 8 39 7' stroke='%2397aaa0' stroke-opacity='.24' stroke-width='.7'/%3E%3C/svg%3E");
+}
+
+.ln-sidebar-quiet-coast .side-rail > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .ln-sidebar-quiet-coast .side-rail::after {
+    left: 6px;
+    right: 0;
+    bottom: 91px;
+    height: 128px;
+  }
+}

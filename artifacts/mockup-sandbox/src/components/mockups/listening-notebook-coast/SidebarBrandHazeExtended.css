@@ -1,0 +1,36 @@
+.ln-sidebar-brand-haze-extended .side-rail {
+  isolation: isolate;
+}
+
+.ln-sidebar-brand-haze-extended .side-rail::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  width: 185px;
+  height: 72%;
+  left: -26px;
+  top: 8%;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    hsl(var(--primary) / .09) 0%,
+    hsl(var(--primary) / .06) 28%,
+    hsl(var(--primary) / .035) 62%,
+    transparent 100%
+  );
+  filter: blur(18px);
+}
+
+.ln-sidebar-brand-haze-extended .side-rail > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 600px) {
+  .ln-sidebar-brand-haze-extended .side-rail::after {
+    width: 172px;
+    left: -22px;
+    filter: blur(16px);
+  }
+}
