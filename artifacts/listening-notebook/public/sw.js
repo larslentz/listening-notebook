@@ -1,4 +1,4 @@
-const CACHE_NAME = 'listening-notebook-shell-v1';
+const CACHE_NAME = 'listening-notebook-shell-v2';
 const SHELL = ['./', './manifest.webmanifest', './favicon.svg'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(async cache => {
