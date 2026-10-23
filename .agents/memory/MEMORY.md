@@ -1,0 +1,1 @@
+- [GitHub workflow push authentication](github-workflow-auth.md) — Git URL rewriting can keep pushes on OAuth even when a PAT helper is supplied.
