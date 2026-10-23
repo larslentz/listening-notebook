@@ -440,8 +440,8 @@ button { cursor: pointer; }
 .app-shell { min-height: 100dvh; display: grid; grid-template-columns: 236px minmax(0,1fr); background: hsl(var(--background)); color: hsl(var(--foreground)); }
 .side-rail { background: hsl(var(--sidebar)); border-right: 1px solid hsl(var(--sidebar-border)); padding: 25px 16px 18px; display:flex; flex-direction:column; position:sticky; top:0; height:100dvh; }
 .brand-block { padding-bottom:26px; }
-.brand { display:flex; gap:12px; align-items:center; padding:4px 10px 0; }
-.brand-mark { width:34px; height:34px; border-radius:50%; border:1px solid hsl(var(--primary)); display:grid; place-items:center; color:hsl(var(--primary)); }
+.brand { display:flex; gap:12px; align-items:flex-start; padding:4px 10px 0; }
+.brand-mark { width:34px; height:34px; flex:0 0 34px; aspect-ratio:1; border-radius:50%; border:1px solid hsl(var(--primary)); display:grid; place-items:center; color:hsl(var(--primary)); }
 .brand-name { display:block; font-family:var(--app-font-serif); font-size:22px; line-height:1; letter-spacing:-.03em; }
 .brand-caption { display:block; color:hsl(var(--muted-foreground)); font:10px var(--app-font-mono); letter-spacing:.11em; text-transform:uppercase; margin-top:5px; }
 .nav-label { color:hsl(var(--muted-foreground)); font:10px var(--app-font-mono); letter-spacing:.13em; text-transform:uppercase; padding:0 12px 11px; }
