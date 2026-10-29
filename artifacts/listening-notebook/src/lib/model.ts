@@ -1,4 +1,5 @@
 export type Perspective = 'withheld' | 'qualities' | 'sources' | 'experience' | 'mediation';
+export type ThreeSentenceDraft = { evidence: string; experience: string; intention: string };
 export type Session = {
   id: string; title: string; type: 'recording' | 'live'; createdAt: string; editedAt: string;
   listeningDate: string; recordingDate: string; location: string; coordinates: string; weather: string;
@@ -6,6 +7,7 @@ export type Session = {
   windProtection: string; gain: string; format: string; fileSize: number; duration: number;
   sampleRate: string; channels: string; processing: string; playbackEquipment: string;
   generalNotes: string; tags: string[]; audioId?: string; demo?: boolean; description: string;
+  threeSentenceDraft?: ThreeSentenceDraft;
   qualities: string[]; qualityNotes: string; observedSource: string; suspectedSource: string;
   contextLater: string; unknownSource: string; sourceConfidence: string; sourceEvidence: string;
   sourceNotes: string; withheldNotes: string; experienceNotes: string; experienceTags: string[];
@@ -17,7 +19,12 @@ export type Pass = { id: string; name: string; date: string; equipment: string; 
 const key = 'listening-notebook-v1';
 const demo: Session = {
  id:'demo-estuary', title:'First light at the estuary', type:'live', createdAt:'2025-04-18T06:14:00.000Z',editedAt:'2025-04-18T06:14:00.000Z',listeningDate:'2025-04-18',recordingDate:'',location:'North inlet, fictional coast',coordinates:'',weather:'Still, overcast',setting:'outdoor',recordist:'',recorder:'',microphones:'',configuration:'',windProtection:'',gain:'',format:'',fileSize:0,duration:0,sampleRate:'',channels:'',processing:'',playbackEquipment:'',generalNotes:'Demonstration content. A fictional live listening session; no audio is included.',tags:['water','dawn','demonstration'],audioId:undefined,demo:true,
- description:'A steady fine-grained wash sits behind intermittent, sharper calls. Attention moves between the near rustle and a low, broad swell that comes and goes without a clear edge.',
+  description:'A steady fine-grained wash sits behind intermittent, sharper calls. Attention moves between the near rustle and a low, broad swell that comes and goes without a clear edge.',
+  threeSentenceDraft:{
+   evidence:'A fine, continuous rustle sits beneath sharper, intermittent sounds as a broad low swell grows and recedes.',
+   experience:'The swell briefly opens the sense of distance; when it fades, attention returns to the nearer rustle.',
+   intention:'I kept this passage for the contrast between its close texture and the sound that seems to widen the scene.',
+  },
   qualities:['Layered','Intermittent','Diffuse','Distant'],qualityNotes:'',observedSource:'',suspectedSource:'Water movement and small birds are possibilities, inferred from listening.',contextLater:'',unknownSource:'The low swell remains unidentified.',sourceConfidence:'possible',sourceEvidence:'Short repeated contours suggested possible calls; no visual confirmation.',sourceNotes:'Possible water movement and distant birds; inferred from listening, not verified.',withheldNotes:'A fine, continuous rustle sits beneath sharper, intermittent sounds. A broad low swell grows and recedes without a clear edge.',experienceNotes:'The space seemed to widen when the low swell receded.',experienceTags:[],mediationFact:'Live listening; no recording chain to describe.',mediationImpression:'',mediationExplanation:'',mediationNotes:'Live listening; no recording chain to describe.',
  observations:[
  {id:'demo-o1',start:42,end:56,perspective:'qualities',label:'Fine texture opens',note:'A thin, continuous rustle becomes easier to hear beneath scattered sharper sounds.',terms:['Layered','Continuous'],confidence:'',createdAt:'2025-04-18T06:15:00.000Z'},
@@ -52,6 +59,7 @@ export async function listSessions():Promise<Session[]> {
   return rows.map(session => ({
    ...session,
    withheldNotes: session.withheldNotes ?? '',
+    threeSentenceDraft: session.threeSentenceDraft ?? (session.demo ? demo.threeSentenceDraft : {evidence:'',experience:'',intention:''}),
    observations: session.observations.map(observation => ({
     ...observation,
     updatedAt: observation.updatedAt ?? observation.createdAt,
@@ -64,5 +72,5 @@ export const putAudio=(id:string,blob:Blob,name:string)=>withStore<IDBValidKey>(
 export const getAudio=async(id:string)=>{try{return await withStore<{id:string;blob:Blob;name:string}|undefined>('audio','readonly',o=>o.get(id));}catch{return undefined;}};
 export async function deleteAudio(id:string){try{await withStore<undefined>('audio','readwrite',o=>o.delete(id));}catch{}}
 export function makeSession(title:string,type:'recording'|'live'):Session{
-  const now=new Date().toISOString();return {id:crypto.randomUUID(),title,type,createdAt:now,editedAt:now,listeningDate:now.slice(0,10),recordingDate:'',location:'',coordinates:'',weather:'',setting:'',recordist:'',recorder:'',microphones:'',configuration:'',windProtection:'',gain:'',format:'',fileSize:0,duration:0,sampleRate:'',channels:'',processing:'',playbackEquipment:'',generalNotes:'',tags:[],description:'',qualities:[],qualityNotes:'',observedSource:'',suspectedSource:'',contextLater:'',unknownSource:'',sourceConfidence:'unknown',sourceEvidence:'',sourceNotes:'',withheldNotes:'',experienceNotes:'',experienceTags:[],mediationFact:'',mediationImpression:'',mediationExplanation:'',mediationNotes:'',observations:[],passes:[]};
+  const now=new Date().toISOString();return {id:crypto.randomUUID(),title,type,createdAt:now,editedAt:now,listeningDate:now.slice(0,10),recordingDate:'',location:'',coordinates:'',weather:'',setting:'',recordist:'',recorder:'',microphones:'',configuration:'',windProtection:'',gain:'',format:'',fileSize:0,duration:0,sampleRate:'',channels:'',processing:'',playbackEquipment:'',generalNotes:'',tags:[],description:'',threeSentenceDraft:{evidence:'',experience:'',intention:''},qualities:[],qualityNotes:'',observedSource:'',suspectedSource:'',contextLater:'',unknownSource:'',sourceConfidence:'unknown',sourceEvidence:'',sourceNotes:'',withheldNotes:'',experienceNotes:'',experienceTags:[],mediationFact:'',mediationImpression:'',mediationExplanation:'',mediationNotes:'',observations:[],passes:[]};
 }

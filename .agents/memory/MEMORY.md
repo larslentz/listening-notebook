@@ -1,1 +1,2 @@
 - [GitHub workflow push authentication](github-workflow-auth.md) — Git URL rewriting can keep pushes on OAuth even when a PAT helper is supplied.
+- [Three-Sentence Method](three-sentence-method.md) — This is Listening Notebook's central description workflow; keep drafts separate from the applied session description.
