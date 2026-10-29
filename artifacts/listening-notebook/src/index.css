@@ -659,6 +659,12 @@ button { cursor: pointer; }
 .builder-columns { display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:23px; }
 .builder-source { padding:16px; }
 .builder-source h3 { font:18px var(--app-font-serif); margin:0 0 11px; }
+.builder-source-terms { margin:-2px 0 11px; }
+.builder-source-terms > div { margin-top:5px; }
+.builder-note-editor { min-height:100px; resize:vertical; font-size:12px; line-height:1.6; }
+.description-observation { border-bottom:1px solid hsl(var(--border)); padding:0 0 12px; margin:0 0 12px; }
+.description-observation:last-child { border-bottom:0; padding-bottom:0; margin-bottom:0; }
+.description-observation-meta { color:hsl(var(--muted-foreground)); font:10px var(--app-font-mono); margin:0 0 7px; }
 .vocab-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:11px; margin-top:24px; }
 .vocab-card { padding:16px; min-height:150px; }
 .vocab-card h3 { font:19px var(--app-font-serif); margin:0 0 8px; }
